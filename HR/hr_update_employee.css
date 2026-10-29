@@ -1,0 +1,30 @@
+/* Styles specifically for Update Employee page */
+.hrUpdate_container { max-width: 900px; margin: 0 auto; }
+.hrUpdate_card { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 24px; }
+.hrUpdate_sectionTitle { font-size: 16px; font-weight: 600; color: #1a1a2e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+.hrUpdate_selectEmployee { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; margin-bottom: 16px; }
+.hrUpdate_selectEmployee:focus { outline: none; border-color: #667eea; }
+.hrUpdate_form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.hrUpdate_form .full { grid-column: 1 / -1; }
+.hrUpdate_label { font-size: 13px; font-weight: 500; color: #475569; margin-bottom: 4px; display: block; }
+.hrUpdate_input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; }
+.hrUpdate_input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+.hrUpdate_input:disabled { background: #f1f5f9; color: #94a3b8; cursor: not-allowed; }
+.hrUpdate_submit { padding: 12px 32px; background: #667eea; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; grid-column: 1 / -1; }
+.hrUpdate_submit:hover { background: #5a6fd6; }
+.hrForm_message { padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-weight: 500; }
+.hrForm_message.success { background: #d1fae5; color: #059669; }
+.hrForm_message.error { background: #fecaca; color: #dc2626; }
+.hrUpdate_infoBox { background: #f8fafc; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; border-left: 4px solid #667eea; }
+.hrUpdate_infoBox p { margin: 4px 0; font-size: 14px; color: #475569; }
+.hrUpdate_infoBox strong { color: #1a1a2e; }
+.hrUpdate_notFound { text-align: center; padding: 40px 0; color: #94a3b8; }
+.hrUpdate_notFound a { color: #667eea; text-decoration: none; }
+.hrUpdate_notFound a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+    .hrUpdate_form { grid-template-columns: 1fr; }
+    .hrUpdate_form .full { grid-column: 1; }
+    .hrUpdate_submit { grid-column: 1; }
+    .hrUpdate_card { padding: 20px; }
+}

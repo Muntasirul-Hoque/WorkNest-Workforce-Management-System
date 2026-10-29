@@ -1,0 +1,12 @@
+/* Styles specifically for Terminate Employee page */
+.hrTerminate_container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.hrTerminate_card { background: #fff; border-radius: 16px; padding: 24px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.hrTerminate_employeeInfo { margin: 16px 0; padding: 16px; background: #f8fafc; border-radius: 8px; }
+.hrTerminate_employeeInfo p { margin: 6px 0; font-size: 14px; }
+.hrTerminate_confirmBtn { padding: 12px 32px; background: #dc2626; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 16px; }
+.hrTerminate_confirmBtn:hover { background: #b91c1c; }
+.hrTerminate_select { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; margin-bottom: 16px; }
+
+@media (max-width: 768px) {
+    .hrTerminate_container { grid-template-columns: 1fr; }
+}

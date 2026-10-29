@@ -1,0 +1,18 @@
+/* Styles specifically for Recruit Employee page */
+.hrForm { background: #fff; border-radius: 16px; padding: 24px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); max-width: 800px; }
+.hrForm_grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.hrForm_group { display: flex; flex-direction: column; }
+.hrForm_group.full { grid-column: 1 / -1; }
+.hrForm_label { font-size: 14px; font-weight: 500; color: #475569; margin-bottom: 6px; }
+.hrForm_label .required { color: #dc2626; }
+.hrForm_input { padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; transition: border-color 0.2s ease; }
+.hrForm_input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+.hrForm_message { padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-weight: 500; }
+.hrForm_message.success { background: #d1fae5; color: #059669; }
+.hrForm_message.error { background: #fecaca; color: #dc2626; }
+.hrForm_submit { padding: 12px 32px; background: #667eea; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s ease; grid-column: 1 / -1; }
+.hrForm_submit:hover { background: #5a6fd6; }
+
+@media (max-width: 640px) {
+    .hrForm_grid { grid-template-columns: 1fr; }
+}

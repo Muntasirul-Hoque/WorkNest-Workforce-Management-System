@@ -1,0 +1,176 @@
+/* Apply Leave Form Styles */
+.mgrForm_card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    margin-bottom: 32px;
+}
+
+.mgrForm_title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 20px;
+}
+
+.mgrForm_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.mgrForm_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.mgrForm_group.full {
+    grid-column: 1 / -1;
+}
+
+.mgrForm_label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 6px;
+}
+
+.mgrForm_label .required {
+    color: #dc2626;
+}
+
+.mgrForm_input,
+.mgrForm_textarea {
+    padding: 10px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.mgrForm_input:focus,
+.mgrForm_textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.mgrForm_textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.mgrForm_info {
+    grid-column: 1 / -1;
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #475569;
+}
+
+.mgrForm_info p {
+    margin: 4px 0;
+}
+
+.mgrForm_info strong {
+    color: #1a1a2e;
+}
+
+.mgrForm_message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.mgrForm_message.success {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.mgrForm_message.error {
+    background: #fecaca;
+    color: #dc2626;
+}
+
+.mgrForm_submit {
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    grid-column: 1 / -1;
+}
+
+.mgrForm_submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* Leave History Table */
+.mgrHistory_container {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.mgrHistory_title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 16px;
+}
+
+.mgrHistory_tableContainer {
+    overflow-x: auto;
+}
+
+.mgrHistory_table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.mgrHistory_table th {
+    text-align: left;
+    padding: 10px 8px;
+    color: #64748b;
+    font-weight: 500;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.mgrHistory_table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #1a1a2e;
+}
+
+.mgrHistory_table tr:hover td {
+    background: #f8fafc;
+}
+
+@media (max-width: 640px) {
+    .mgrForm_grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mgrForm_group.full {
+        grid-column: 1;
+    }
+    
+    .mgrForm_submit {
+        grid-column: 1;
+    }
+    
+    .mgrForm_info {
+        grid-column: 1;
+    }
+}

@@ -1,0 +1,100 @@
+CREATE TABLE `User` (
+    `UserName` VARCHAR(50) NOT NULL,
+    `Password` VARCHAR(255) NOT NULL,
+    `Role` VARCHAR(50) NOT NULL,
+    `Dept` VARCHAR(50) NOT NULL,
+    `Salary` DECIMAL(10,2) NOT NULL,
+    `FirstName` VARCHAR(50) NOT NULL,
+    `LastName` VARCHAR(50) NOT NULL,
+    `DOB` DATE NOT NULL,
+    `Gender` VARCHAR(10) NOT NULL,
+    `Email` VARCHAR(100) NOT NULL,
+    `Phone` VARCHAR(20) NOT NULL,
+    `Address` VARCHAR(255) NOT NULL,
+    `JoinDate` DATE NOT NULL,
+    `Status` VARCHAR(20) DEFAULT 'Active',
+    PRIMARY KEY (`UserName`)
+);
+
+CREATE TABLE `hr` (
+    `HRID` INT AUTO_INCREMENT PRIMARY KEY,
+    `UserName` VARCHAR(50) NOT NULL,
+    FOREIGN KEY (`UserName`) REFERENCES `User`(`UserName`) ON DELETE CASCADE
+);
+
+CREATE TABLE `Employee` (
+    `EmployeeID` INT AUTO_INCREMENT PRIMARY KEY,
+    `UserName` VARCHAR(50) NOT NULL,
+    `ManagerID` INT NULL,
+    FOREIGN KEY (`UserName`) REFERENCES `User`(`UserName`) ON DELETE CASCADE
+);
+
+CREATE TABLE `Manager` (
+    `ManagerID` INT AUTO_INCREMENT PRIMARY KEY,
+    `UserName` VARCHAR(50) NOT NULL,
+    `EmployeeID` INT NULL,
+    FOREIGN KEY (`UserName`) REFERENCES `User`(`UserName`) ON DELETE CASCADE
+);
+
+CREATE TABLE `Leave` (
+    `LeaveID` INT AUTO_INCREMENT PRIMARY KEY,
+    `UserName` VARCHAR(50) NOT NULL,
+    `SD` DATE NOT NULL,
+    `ED` DATE NOT NULL,
+    `Reason` TEXT NOT NULL,
+    `Status` VARCHAR(20) DEFAULT 'Pending',
+    FOREIGN KEY (`UserName`) REFERENCES `User`(`UserName`) ON DELETE CASCADE
+);
+
+CREATE TABLE `Promotion` (
+    `PromotionID` INT AUTO_INCREMENT PRIMARY KEY,
+    `EmployeeID` INT NOT NULL,
+    `PromotionDate` DATE NOT NULL,
+    `Status` VARCHAR(20) DEFAULT 'Pending',
+    FOREIGN KEY (`EmployeeID`) REFERENCES `Employee`(`EmployeeID`) ON DELETE CASCADE
+);
+
+-- NEW TABLE NEEDED FOR MANAGER ASSIGNING TASKS:
+CREATE TABLE `Task` (
+    `TaskID` INT AUTO_INCREMENT PRIMARY KEY,
+    `ManagerID` INT NOT NULL,
+    `EmployeeID` INT NOT NULL,
+    `Title` VARCHAR(100) NOT NULL,
+    `Description` TEXT NOT NULL,
+    `T_Status` VARCHAR(20) DEFAULT 'Pending',
+    `AssignedDate` DATE NOT NULL,
+    `DueDate` DATE NOT NULL,
+    FOREIGN KEY (`ManagerID`) REFERENCES `Manager`(`ManagerID`) ON DELETE CASCADE,
+    FOREIGN KEY (`EmployeeID`) REFERENCES `Employee`(`EmployeeID`) ON DELETE CASCADE
+);
+INSERT INTO `User` (`UserName`, `Password`, `Role`, `Dept`, `Salary`, `FirstName`, `LastName`, `DOB`, `Gender`, `Email`, `Phone`, `Address`, `JoinDate`, `Status`) VALUES
+('hira_islam', '12345', 'HR', 'HR', 65000.00, 'Hira', 'Islam', '1992-03-15', 'Female', 'hira.islam@worknest.com', '01712345601', 'Dhanmondi, Dhaka', '2020-01-10', 'Active'),
+('izar_rahman', '12345', 'Software_Developer', 'Software', 55000.00, 'Izar', 'Rahman', '1996-07-22', 'Male', 'izar.rahman@worknest.com', '01712345602', 'Banani, Dhaka', '2021-06-15', 'On_leave'),
+('limon_ahmed', '12345', 'Software_Designer', 'Software', 52000.00, 'Limon', 'Ahmed', '1997-11-05', 'Male', 'limon.ahmed@worknest.com', '01712345603', 'Uttara, Dhaka', '2021-09-01', 'Active'),
+('manik_roy', '12345', 'Software_Manager', 'Software', 80000.00, 'Manik', 'Roy', '1990-02-18', 'Male', 'manik.roy@worknest.com', '01712345604', 'Gulshan, Dhaka', '2019-05-20', 'Active'),
+('rom_das', '12345', 'Salesman', 'Marketing', 40000.00, 'Rom', 'Das', '1998-04-30', 'Male', 'rom.das@worknest.com', '01712345605', 'Mirpur, Dhaka', '2022-02-14', 'Active'),
+('tonay_saha', '12345', 'Software_Designer', 'Software', 48000.00, 'Tonay', 'Saha', '1999-08-12', 'Male', 'tonay.saha@worknest.com', '01712345606', 'Mohammadpur, Dhaka', '2022-10-01', 'Active');
+
+INSERT INTO `hr` (`UserName`) VALUES ('hira_islam');
+
+INSERT INTO `Employee` (`UserName`, `ManagerID`) VALUES 
+('izar_rahman', NULL), 
+('limon_ahmed', NULL), 
+('manik_roy', NULL), 
+('rom_das', NULL), 
+('tonay_saha', NULL);
+
+INSERT INTO `Manager` (`UserName`, `EmployeeID`) VALUES ('manik_roy', 3); 
+
+UPDATE `Employee` SET `ManagerID` = 3 WHERE `UserName` IN ('izar_rahman', 'limon_ahmed', 'tonay_saha');
+UPDATE `Employee` SET `ManagerID` = NULL WHERE `UserName` = 'rom_das';
+
+INSERT INTO `Leave` (`UserName`, `SD`, `ED`, `Reason`, `Status`) VALUES 
+('izar_rahman', '2026-08-31', '2026-09-02', 'Family vacation to Saint Martin Island.', 'Pending'),
+('rom_das', '2026-09-10', '2026-09-12', 'Attending a marketing conference in Chattogram.', 'Processing'),
+('limon_ahmed', '2026-07-01', '2026-07-15', 'Medical emergency and rest.', 'Accepted');
+
+INSERT INTO `Promotion` (`EmployeeID`, `PromotionDate`, `Status`) VALUES 
+(2, '2026-08-20', 'Pending'),    
+(1, '2026-07-15', 'Processing'),   
+(4, '2026-06-10', 'Rejected');
